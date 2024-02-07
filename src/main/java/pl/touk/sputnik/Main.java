@@ -23,6 +23,7 @@ public final class Main {
     private Main() {}
 
     public static void main(String[] args) {
+        sayHello();
         printWelcomeMessage();
         CliWrapper cliWrapper = new CliWrapper();
         CommandLine commandLine = null;
@@ -64,4 +65,9 @@ public final class Main {
     private static void printWelcomeMessage() {
         System.out.println("Sputnik version " + Main.class.getPackage().getImplementationVersion());
     }
+
+    public static void sayHello() {
+        System.out.println("Hello from team delta");
+    }
+
 }

@@ -1,11 +1,16 @@
 pipeline {
     agent any
-
     tools {
         jdk 'JDK17'
     }
-
     stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    sh 'java -version'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 script {

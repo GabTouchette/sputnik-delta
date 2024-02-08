@@ -6,7 +6,7 @@ pipeline {
                 script {
                     try {
 
-                        sh './gradlew build -x test'
+                        sh './gradlew build'
                     } catch (Exception e) {
                         echo "Build failed, but tests will run next."
                     }

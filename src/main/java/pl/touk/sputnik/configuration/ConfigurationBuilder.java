@@ -44,10 +44,7 @@ public class ConfigurationBuilder {
             throw new RuntimeException(e);
         }
     }
-
     public static Configuration initFromProperties(Properties properties) {
         return new Configuration(properties);
     }
-
-
 }

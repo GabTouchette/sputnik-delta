@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TSLintResultParserTest {
 
@@ -41,5 +42,35 @@ class TSLintResultParserTest {
         List<Violation> violations = fixture.parse(jsonViolations);
 
         assertThat(violations.isEmpty()).isTrue();
+    }
+
+    @Test
+    void shouldThrowTSLintExceptionWhenJsonParsingFails() throws IOException {
+        TSLintResultParser fixture = new TSLintResultParser();
+        String invalidJson = IOUtils.toString(getClass().getResourceAsStream("/json/invalid.json"));
+
+        assertThrows(TSLintException.class, () -> {
+            fixture.parse(invalidJson);
+        });
+    }
+  
+    @Test
+    void shouldReturnEmptyListWhenJsonIsEmpty() throws IOException {
+        TSLintResultParser fixture = new TSLintResultParser();
+        String emptyJson = "";
+
+        List<Violation> violations = fixture.parse(emptyJson);
+
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
+    void shouldReturnEmptyListWhenJsonContainsNoViolations() throws IOException {
+        TSLintResultParser fixture = new TSLintResultParser();
+        String jsonWithoutViolations = "[]";
+
+        List<Violation> violations = fixture.parse(jsonWithoutViolations);
+
+        assertThat(violations).isEmpty();
     }
 }

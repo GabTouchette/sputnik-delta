@@ -67,7 +67,7 @@ public final class Main {
     }
 
     public static void sayHello() {
-        System.out.println("Hello from team delta.");
+        System.out.println("Hello from team delta!");
     }
 
 }

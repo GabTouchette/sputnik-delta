@@ -66,8 +66,9 @@ public final class Main {
         System.out.println("Sputnik version " + Main.class.getPackage().getImplementationVersion());
     }
 
+    // test video
     public static void sayHello() {
-        System.out.println("Hello from team delta");
+        System.out.println("Hello from team delta!");
     }
 
 }
